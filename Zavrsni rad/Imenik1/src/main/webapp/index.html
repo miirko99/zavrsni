@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Imenik</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://unpkg.com/vue-router@4"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/sha256.js"></script>
+    <script src="/netutils.js"></script>
+    <script src="/home.js"></script>
+    <script src="/imenik.js"></script>
+    <script src="/login.js"></script>
+    <script src="/singup.js"></script>
+    <script src="/logout.js"></script>
+    <script src="/slike.js"></script>
+
+</head>
+<body>
+
+
+<div id="app">
+    <p>
+        <router-link to="/">Home </router-link>
+        <router-link to="/slike">Slike </router-link>
+        <span v-if="logged==true">
+          <router-link to="/imenik">Imenik  </router-link>
+          <router-link to="/logout">Logout ({{username}})</router-link>
+      </span>
+        <span v-else><router-link  to="/login">Login </router-link>
+      <router-link  to="/singup">Singup </router-link>
+      </span>
+    </p>
+    <router-view></router-view>
+</div>
+
+<script>
+
+    const routes = [
+        { path: '/', component: Home },
+        { path: '/imenik', component: Imenik },
+        { path: '/login', component: Login },
+        { path: '/singup', component: Singup },
+        { path: '/logout', component: Logout },
+        { path: '/slike', component: Slike }
+    ]
+
+    const router = VueRouter.createRouter({
+        routes,
+        history: VueRouter.createWebHistory()
+    })
+
+    const app = Vue.createApp({
+        data() { return {
+           logged: false,
+           username: ""
+        }},
+        methods: {
+           setLogged(username) {
+                this.logged=true;
+                this.username=username;
+           },
+           setLoggedOut() {
+               this.logged=false;
+                this.username="";
+           },
+           checkLogin() {
+               get("/api/checklogin",(data) => {
+                   if(data.res=="OK") {
+                      this.setLogged(data.username);
+                   }
+               });
+           },
+           refreshSession() {
+                this.checkLogin();
+                setTimeout(this.refreshSession,600000);
+            }
+        },
+        mounted() {
+           this.refreshSession();
+        },
+        router:router
+    }).use(router).mount("#app")
+
+
+
+</script>
+</body>
+</html>

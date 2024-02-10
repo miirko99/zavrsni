@@ -1,0 +1,183 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+#navBar {
+  background-color: #34e8eb;
+  height: 45px;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+}
+#navBar > h2 {
+  margin: 0;
+  color: black;
+  margin-left: 15px;
+  margin-right: auto;
+}
+.btn {
+  background-color: #34e8eb;
+  border: none;
+  min-width: 70px;
+  min-height: 30px;
+}
+.btn:hover {
+  background-color: #27aeb1;
+}
+#navBar > img {
+  height: 80%;
+  margin-left: 15px;
+}
+#navBar .btn {
+  background-color: #34e8eb;
+  height: 100%;
+  width: 100px;
+  border: none;
+}
+#navBar .btn:hover {
+  background-color: #27aeb1;
+}
+#navBar > .dropDownDiv {
+  position: relative;
+  height: 100%;
+}
+#navBar > .dropDownDiv > div {
+  position: absolute;
+  right: 0px;
+}
+#navBar > .dropDownDiv > div > .btn {
+  width: 100px;
+  min-height: 25px;
+  background-color: #34e8eb;
+  border: none;
+}
+#navBar > .dropDownDiv > div > .btn:hover {
+  background-color: #27aeb1;
+}
+.home {
+  margin-top: 20px;
+  border: 2px solid rgb(99, 50, 50);
+}
+#loginDiv,
+#regDiv {
+  background-color: #e6e6e6;
+  border-radius: 10px;
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid black;
+  height: 300px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+#regDiv {
+  height: 500px;
+}
+#loginDiv > *,
+#regDiv > * {
+  width: 80%;
+}
+.loginBtns {
+  display: flex;
+  justify-content: space-around;
+}
+input {
+  min-height: 25px;
+}
+.listaKurseva {
+  display: grid;
+  width: 100%;
+  margin: 30px auto;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px 10px;
+}
+.kurs {
+  width: 200px;
+  margin: auto;
+  border: 2px solid black;
+}
+.kurs > img{
+  width:200px;
+}
+
+#dodajKursPage {
+  border: 1px solid red;
+  margin: 20px;
+  display: flex;
+}
+#kursForma {
+  background-color: #e6e6e6;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 400px;
+}
+#kvizForma {
+  background-color: #e6e6e6;
+  width: 100%;
+}
+.pitanjeForma {
+  width: 100%;
+}
+.odgovor {
+  display: flex;
+  align-items: center;
+  margin: 5px;
+}
+.odgovor > :last-child {
+  width: 80%;
+}
+.kvizButtons {
+  display: flex;
+  justify-content: space-around;
+}
+#userDataForm{
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  width: 300px;
+}
+#userDataForm > *{
+  margin-top: 10px;
+}
+.kursPage{
+  border: 1px solid red;
+  margin: 20px;
+  padding: 5px;
+}
+.kursInfo {
+  display: flex;
+}
+.slikaButtons{
+  width: 40%;
+}
+.slikaButtons > img{
+  width: 100%;
+}
+.naslovOpis{
+  min-width: 220px;
+  width:60%;
+}
+.kursPage .slikaButtons > .buttons{
+  width: 100%;
+  display: flex;
+}
+.kursPage .buttons .btn{
+  flex-grow: 1;
+}
+.recenzija{
+  background-color: #a6b1b1;
+}
+.inputRecenzija > textarea{
+  display: inline-block;
+  width: 100%;
+}
